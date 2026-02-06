@@ -1,0 +1,76 @@
+/* Algemene instellingen */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('ChatGPT\ Image\ 3\ apr\ 2025\,\ 18_34_16.png') no-repeat center center fixed; /* Voeg je achtergrondafbeelding toe */
+    background-size: cover; /* Zorg ervoor dat de afbeelding de hele pagina bedekt */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Home Screen */
+  .home-screen {
+    text-align: center;
+    background-color: #374151;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .home-screen h1 {
+    font-size: 36px;
+    margin-bottom: 16px;
+    color: #FCD34D;
+  }
+  
+  .home-screen p {
+    font-size: 18px;
+    margin-bottom: 24px;
+    color: #D1D5DB;
+  }
+  
+  /* Knoppen */
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .button {
+    background-color: #10B981;
+    color: white;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .button:hover {
+    background-color: #059669;
+  }
+  
+  .button.selected {
+    border: 3px solid #FCD34D; /* Gele rand */
+    border-radius: 8px; /* Zorg ervoor dat de rand afgerond blijft */
+    transform: scale(1.1); /* Vergroot de knop iets */
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  
+  /* Footer */
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+  }

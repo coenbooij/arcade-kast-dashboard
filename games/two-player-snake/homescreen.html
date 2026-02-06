@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi Snake Game</title>
+  <link rel="stylesheet" href="homescreen.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js" defer></script>
+  <script src="homescreen.js" defer></script>
+</head>
+<body>
+  <div id="homeScreen" class="home-screen">
+    <h1>Welkom bij Multi Snake</h1>
+    <p>Kies een spelmodus:</p>
+    <div class="button-container">
+        <button id="onePlayerButton" class="button selected" data-key="1PLAYER">1 Player</button>
+        <button id="twoPlayerButton" class="button" data-key="2PLAYER">2 Player</button>
+      </div>
+      <p>Je kunt navigeren met de pijltjes en WASD en om het spel te selecteren klik je op enter.</p>
+  </div>
+
+  <script>
+    // Start de achtergrondmuziek wanneer de pagina geladen is
+    window.addEventListener('load', function() {
+      var backgroundMusic = document.getElementById('backgroundMusic');
+      backgroundMusic.play();
+    });
+  </script>
+  <audio id="backgroundMusic" src="Upbeat Jungle Music For Media _ Cheerful Tribal Theme-yt.savetube.me.mp3" loop></audio> <!-- Voeg dit toe voor achtergrondmuziek -->
+
+</body>
+<footer>
+    &copy; William Vonk 2025
+</footer>
+</html>

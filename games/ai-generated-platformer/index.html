@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Invaders X</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="hud">
+            <div class="player1-hud">
+                <div class="score">P1 Score: <span id="score1">0</span></div>
+                <div class="multiplier">×<span id="multiplier1">1</span></div>
+                <div class="lives">Lives: <span id="lives1">3</span></div>
+                <div class="powerup-timer" id="powerupTimer1"></div>
+            </div>
+            <div class="level">Level: <span id="level">1</span></div>
+            <div class="player2-hud">
+                <div class="score">P2 Score: <span id="score2">0</span></div>
+                <div class="multiplier">×<span id="multiplier2">1</span></div>
+                <div class="lives">Lives: <span id="lives2">3</span></div>
+                <div class="powerup-timer" id="powerupTimer2"></div>
+            </div>
+        </div>
+        <canvas id="gameCanvas"></canvas>
+        <div class="menu" id="menu">
+            <h1>Space Invaders X</h1>
+            <div class="difficulty-selection">
+                <h3>Select Difficulty</h3>
+                <div class="difficulty">
+                    <button class="difficulty-btn" data-difficulty="easy">Easy</button>
+                    <button class="difficulty-btn" data-difficulty="normal">Normal</button>
+                    <button class="difficulty-btn" data-difficulty="hard">Hard</button>
+                </div>
+                <button id="startBtn" class="hidden">Start Game</button>
+            </div>
+            <div class="high-scores">
+                <h2>High Scores</h2>
+                <ol id="highScoresList"></ol>
+            </div>
+        </div>
+        <div class="game-over hidden" id="gameOver">
+            <h2>Game Over</h2>
+            <p>Player 1 Score: <span id="finalScore1">0</span></p>
+            <p>Player 2 Score: <span id="finalScore2">0</span></p>
+            <p>Total Score: <span id="finalScoreTotal">0</span></p>
+            <button id="restartBtn">Play Again</button>
+        </div>
+    </div>
+    <div class="pause-overlay hidden" id="pauseOverlay">
+        <h2>PAUSED</h2>
+        <p>Press P to resume</p>
+    </div>
+    <script type="module" src="game.js"></script>
+</body>
+</html>

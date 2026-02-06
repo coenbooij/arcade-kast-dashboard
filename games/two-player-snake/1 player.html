@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1 Player</title>
+  <link rel="stylesheet" href="1 player.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script src="1 player.js"></script>
+</head>
+<body>
+  <div class="background-blur"></div>
+  <div class="game-container">
+    <div id="startScreen" class="start-screen">
+      <h1>1 player Snake</h1>
+      <div class="player-inputs">
+        <p>Voor het invoeren van de namen moet je de pijltjes of WASD gebruiken om te kunnen navigeren door het toetstenbord, met behulp van de enter kan je de letters invoeren.</p>
+        <div class="input-container">
+          <input type="text" id="player1Name" placeholder="Player 1 Name" readonly>
+          <div id="virtualKeyboard" class="virtual-keyboard">
+            <div class="keyboard-row">
+              <div class="key" data-key="A">A</div>
+              <div class="key" data-key="B">B</div>
+              <div class="key" data-key="C">C</div>
+              <div class="key" data-key="D">D</div>
+              <div class="key" data-key="E">E</div>
+              <div class="key" data-key="F">F</div>
+              <div class="key" data-key="G">G</div>
+            </div>
+            <div class="keyboard-row">
+              <div class="key" data-key="H">H</div>
+              <div class="key" data-key="I">I</div>
+              <div class="key" data-key="J">J</div>
+              <div class="key" data-key="K">K</div>
+              <div class="key" data-key="L">L</div>
+              <div class="key" data-key="M">M</div>
+              <div class="key" data-key="N">N</div>
+            </div>
+            <div class="keyboard-row">
+              <div class="key" data-key="O">O</div>
+              <div class="key" data-key="P">P</div>
+              <div class="key" data-key="Q">Q</div>
+              <div class="key" data-key="R">R</div>
+              <div class="key" data-key="S">S</div>
+              <div class="key" data-key="T">T</div>
+              <div class="key" data-key="U">U</div>
+            </div>
+            <div class="keyboard-row">
+              <div class="key" data-key="V">V</div>
+              <div class="key" data-key="W">W</div>
+              <div class="key" data-key="X">X</div>
+              <div class="key" data-key="Y">Y</div>
+              <div class="key" data-key="Z">Z</div>
+              <div class="key" data-key="DEL">DEL</div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <p id="start-tekst">Start de game door op q te klikken. Om naar het menu terug te gaan druk op de spatiebalk.</p>
+      <button id="startButton" class="start-button">&#9654; Play</button>
+      <button id="backToHomeButton" class="home-button">&#8592; Home</button>
+    </div>
+
+    <div id="gameScreen" class="game-screen hidden">
+      <div class="score-board">
+        <div class="score score-p1"><span id="score1">0</span></div>
+      </div>
+
+      <div id="gameCanvas"></div>
+    </div>
+
+    <div id="gameOver" class="game-over hidden">
+      <div class="game-over-content">
+        <h2>Game Over!</h2>
+        <p id="winner"> &#127942;</p>
+        <p>Wil je de game herspelen? Druk dan op u. Als je naar het menu terug wil klik dan op spatie.</p>
+        <button id="playAgain" class="button">&#10227; Play Again</button>
+        <button id="backToHomeButtonGameOver" class="button">&#8592; Home</button>
+      </div>
+    </div>
+  </div>
+  
+  <div id="highScoresStart" class="high-scores-container">
+    <h2>High Scores 🏆</h2>
+    <ul id="highScoresListStart" class="high-scores-list"></ul>
+  </div>
+
+  <script>
+    // Start de achtergrondmuziek wanneer de pagina geladen is
+    window.addEventListener('load', function() {
+      var backgroundMusic = document.getElementById('backgroundMusic');
+      backgroundMusic.play();
+    });
+  </script>
+
+  <audio id="eatSound" src="apple crunch.wav"></audio>
+  <audio id="backgroundMusic" src="Upbeat Jungle Music For Media _ Cheerful Tribal Theme-yt.savetube.me.mp3" loop></audio> <!-- Voeg dit toe voor achtergrondmuziek -->
+  
+</body>
+<footer>
+  &copy; William Vonk 2025
+</footer>
+</html>

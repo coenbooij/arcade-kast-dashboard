@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Runner</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.1/p5.min.js"></script>
+    <script src="game3.1.js"></script>
+    <link rel="stylesheet" href="game3CSS.css">
+
+</head>
+<body>
+    <div id="menu" class="menu">
+        <div class="menu-content">
+            <h1>Pixel Runner</h1>
+            <span class="subtitle">Multiplayer Edition</span>
+
+            <div class="instructions">
+                <div class="instruction-box">
+                    <div class="icon">⌨️</div>
+                    <h3>Controls</h3>
+                    <p>Player 1: W to jump<br>Player 2: ↑ to jump</p>
+                </div>
+
+                <div class="instruction-box">
+                    <div class="icon">👥</div>
+                    <h3>Multiplayer</h3>
+                    <p>Compete with a friend on the same keyboard!</p>
+                </div>
+
+                <div class="instruction-box">
+                    <div class="icon">🎮</div>
+                    <h3>Objective</h3>
+                    <p>Jump over obstacles and survive longer than your opponent!</p>
+                </div>
+            </div>
+
+            <button id="startButton" class="start-button">
+                <span class="icon">🎮</span>
+                Start Game
+            </button>
+        </div>
+    </div>
+    <div id="gameContainer"></div>
+</body>
+</html>

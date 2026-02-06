@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Arcade Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('/images/background-video.gif');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-attachment: fixed;
+      color: rgb(255, 208, 0);
+      font-family: "Courier New", monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    h1 {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 3rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-family: 'Press Start 2P', monospace;
+      color: #ffffff;
+      text-shadow:
+        0 0 2px #ff00ff,
+        0 0 5px #ff00ff,
+        0 0 10px #ff00ff,
+        0 0 20px #ff00ff;
+      animation: flicker 2s infinite;
+    }
+
+    #gameList {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 80%;
+      margin: 20px auto;
+      gap: 20px;
+    }
+
+    .game {
+      width: 300px;
+      height: 300px;
+      background-color: #222;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .game img {
+      max-width: 100%;
+      height: 90%;
+      margin-bottom: 10px;
+    }
+
+    .game-title {
+      font-size: 1.5rem;
+      text-align: center;
+      font-family: 'Press Start 2P', monospace;
+      margin-bottom: 5px;
+    }
+
+    .game:hover {
+      transform: scale(1.05);
+    }
+
+    .selected {
+      border: 2px solid #f00;
+      box-shadow: 0 0 10px #f00;
+      transform: scale(1.05);
+      animation: pulse 0.2s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 10px #f00;
+      }
+      100% {
+        box-shadow: 0 0 30px #f00;
+      }
+    }
+
+    @keyframes flicker {
+      0%   { opacity: 1; }
+      10%  { opacity: 0.85; }
+      15%  { opacity: 1; }
+      25%  { opacity: 0.8; }
+      30%  { opacity: 1; }
+      100% { opacity: 1; }
+    }
+
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 9999;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .video-overlay video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 100%;
+      min-height: 100%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 20%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Guido Arcade</h1>
+
+  <div class="video-overlay">
+    <video autoplay loop muted playsinline>
+      <source src="images/old-screen-overlay.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <audio id="background-music" autoplay loop>
+    <source src="background-music.mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="gameList">
+    <div class="game selected" data-game-url="games/breakout/index.html">
+      <img src="games/breakout/screenshot.jpg" alt="Breakout" />
+      <span class="game-title">Breakout</span>
+    </div>
+    <div class="game" data-game-url="games/two-player-snake/homescreen.html">
+      <img src="images/two-player-snake.png" alt="Snake" />
+      <span class="game-title">2-Player snake</span>
+    </div>
+    <div class="game" data-game-url="games/tetris/index.html">
+      <img src="games/tetris/screenshot.jpg" alt="Tetris" />
+      <span class="game-title">Tetris</span>
+    </div>
+    <div class="game" data-game-url="games/Pacman/index.html">
+      <img src="games/pacman/screenshot.jpg" alt="Pacman" />
+      <span class="game-title">Pacman</span>
+    </div>
+
+    <div class="game" data-game-url="games/pong/index.html">
+      <img src="games/pong/screenshot.jpg" alt="Galaga" />
+      <span class="game-title">Pong</span>
+    </div>
+    <div class="game" data-game-url="games/pixel-runner/game3html.html">
+      <img src="images/pacman-lead-graphic.jpg" alt="Pacman" />
+      <span class="game-title">Pixel runner</span>
+    </div>
+    <div class="game" data-game-url="games/space-shooter/Space_Shooter.html">
+      <img src="https://via.placeholder.com/80x80?text=SI" alt="Space Invaders" />
+      <span class="game-title">Space shooter</span>
+    </div>
+    <div class="game" data-game-url="games/tetris/index.html">
+      <img src="https://via.placeholder.com/80x80?text=TET" alt="Tetris" />
+      <span class="game-title">Game 8</span>
+    </div>
+  </div>
+
+  <script>
+    const gameElements = document.querySelectorAll(".game");
+    let currentIndex = 0;
+    const columns = 4;
+
+    function updateSelection(newIndex) {
+      gameElements[currentIndex].classList.remove("selected");
+      currentIndex = newIndex;
+      gameElements[currentIndex].classList.add("selected");
+
+      gameElements[currentIndex].scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'center'
+      });
+
+    }
+
+    document.addEventListener("keydown", function(e) {
+      let newIndex = currentIndex;
+
+      if (e.key === "ArrowRight") {
+        if ((currentIndex + 1) < gameElements.length && (currentIndex + 1) % columns !== 0) {
+          newIndex = currentIndex + 1;
+        }
+      }
+      else if (e.key === "ArrowLeft") {
+        if (currentIndex % columns !== 0) {
+          newIndex = currentIndex - 1;
+        }
+      }
+      else if (e.key === "ArrowDown") {
+        const potentialIndex = currentIndex + columns;
+        if (potentialIndex < gameElements.length) {
+          newIndex = potentialIndex;
+        }
+      }
+      else if (e.key === "ArrowUp") {
+        const potentialIndex = currentIndex - columns;
+        if (potentialIndex >= 0) {
+          newIndex = potentialIndex;
+        }
+      }
+      else if (e.key === "Enter") {
+        const gameUrl = gameElements[currentIndex].getAttribute("data-game-url");
+        window.location.href = gameUrl;
+        return;
+      }
+
+      if (newIndex !== currentIndex) {
+        updateSelection(newIndex);
+      }
+    });
+  </script>
+
+  <footer>
+    <p>&#169; Guido de Bres 2025</p>
+  </footer>
+</body>
+</html>
