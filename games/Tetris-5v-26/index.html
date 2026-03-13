@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tetris – Les 1</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: black;
+    }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+  <!-- canvas for the game -->
+  <canvas id="tetris"></canvas>
+
+  <!-- game code -->
+  <script src="./game.js"></script>
+
+  <script>
+    // start when DOM is ready
+    window.addEventListener('DOMContentLoaded', () => {
+      Tetris.start('tetris');
+    });
+  </script>
+</body>
+</html>
